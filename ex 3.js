@@ -1,24 +1,26 @@
 chefe()
 
 function chefe(){
-    var vetor = []
-    
-    vetor.push({
-        sexo: prompt(`Informe o sexo: f - feminino; m - masculino`),
-        h: Number(prompt(`Informe a altura: (m.cm)`)),
-        idade: Number(prompt(`Informe a idade`)),
-        olhos: prompt(`Informe a cor dos olhos: (A - azuis, V - verdes, C - castanhos)`)
-    })
-    
+    // var tem escopo global
+    // let tem escopo local
+    let vetor = [] // let só tem relação com essa função
     do {
 
         var opcao = Number(prompt(`Digite: \n [1] entrada \n [2] Relat1 \n [3] Relat2 \n [4] Relat3 \n [5] Relat4 \n [6] Sair`))
         switch(opcao){
             case 1: entrada(vetor)
+                    break
             case 2: mediaIdade(vetor)
+                    break
             case 3: maiorIdade(vetor)
+                    break
             case 4: qtdMulheres(vetor)
+                    break
             case 5: homens(vetor)  
+                    break
+            case 6: console.log(`Obrigado por usar nosso programa!`)
+                    break
+            default: console.log(`Opção inválida, tente novamente`)
         }
         
     }
@@ -27,18 +29,18 @@ function chefe(){
 
 function entrada(vet){
     vet.push({
-        sexo: prompt(`Informe o sexo: f - feminino; m - masculino`),
+        sexo: prompt(`Informe o sexo: f - feminino; m - masculino`).toUpperCase() /**converte para letra maiúscula*/,
         h: Number(prompt(`Informe a altura: (m.cm)`)),
         idade: Number(prompt(`Informe a idade`)),
-        olhos: prompt(`Informe a cor dos olhos: (A - azuis, V - verdes, C - castanhos)`)
+        olhos: prompt(`Informe a cor dos olhos: (A - azuis, V - verdes, C - castanhos)`).toUpperCase()
     })
 }
 
 function mediaIdade(vet){
 
-    var media = 0
-    var qtd = 0
-    for(var i = 0; i < vet.length; i++){
+    let media = 0
+    let qtd = 0
+    for(let i = 0; i < vet.length; i++){
         if ((vet[i].olhos == 'C') && (vet[i].h > 1.6)){
             media += vet[i].idade
             qtd++
@@ -55,8 +57,8 @@ function mediaIdade(vet){
 
 function maiorIdade(vet){
 
-    var maior = vet[0].idade
-    for(var i = 0; i < vet.length; i++){
+    let maior = vet[0].idade
+    for(let i = 1; i < vet.length; i++){
         if(vet[i].idade > maior){
             maior = vet[i].idade
         }
@@ -67,10 +69,10 @@ function maiorIdade(vet){
 
 function qtdMulheres(vet){
     
-    var qtd = 0
-    for(var i = 0; i < vet.length; i++){
+    let qtd = 0
+    for(let i = 0; i < vet.length; i++){
 
-        if(vet[i].sexo == 'f'){
+        if(vet[i].sexo == 'F'){
 
             if(((vet[i].idade <= 45) && (vet[i].idade > 20)) || ((vet[i].olhos == 'V') && (vet[i].h < 1.7))){
                 qtd++
@@ -83,9 +85,9 @@ function qtdMulheres(vet){
 
 function homens(vet){
     
-    var qtd = 0
-    for(var i = 0; i < vet.length; i++){
-        if (vet[i].sexo == 'm'){
+    let qtd = 0
+    for(let i = 0; i < vet.length; i++){
+        if (vet[i].sexo == 'M'){
             qtd++
         }
     }
